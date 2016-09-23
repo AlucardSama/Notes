@@ -13,15 +13,15 @@
 &nbsp;&nbsp;&nbsp;&nbsp;以上的工具封装了我们经常会用到的方法，比如拖拽View，计算滑动速度，View的滚动，手势处理等等。如果我们自己去实现这些方法会比较繁琐，而且容易出一些bug。所以，作为自定义View系列教程的开端，先介绍一下这些常用的工具，以便在后续的学习和工作中使用。
 
 > Configuration  
- 
-	Configuration用来描述设备的配置信息。 
-	比如用户的配置信息：locale和scaling等等 
-	比如设备的相关信息：输入模式，屏幕大小， 屏幕方向等等 
+
+	Configuration用来描述设备的配置信息。
+	比如用户的配置信息：locale和scaling等等
+	比如设备的相关信息：输入模式，屏幕大小， 屏幕方向等等
 
 > ViewConfiguration  
 
-	ViewConfiguration提供了一些自定义控件用到的标准常量，比如尺寸大小，滑动距离，敏感度等等。 
-> GestureDetector 
+	ViewConfiguration提供了一些自定义控件用到的标准常量，比如尺寸大小，滑动距离，敏感度等等。
+> GestureDetector
 
 	手势监听
 
@@ -37,7 +37,7 @@
 
 	在项目中很多场景需要用户手指拖动其内部的某个View，此时就需要在onInterceptTouchEvent()
     和onTouchEvent()这两个方法中写不少逻辑了，比如处理：拖拽移动，越界，多手指的按下，加速
-	度检测等等。 
+	度检测等等。
 
 
 
@@ -47,8 +47,8 @@
 
 #### MeasureSpec基础知识
 
-1. MeasureSpec封装了父布局传递给子View的布局要求。 
-2. MeasureSpec可以表示宽和高 
+1. MeasureSpec封装了父布局传递给子View的布局要求。
+2. MeasureSpec可以表示宽和高
 3. MeasureSpec由size和mode组成
 
 > MeasureSpec高2位代表SpecMode即测量模式，低30位为SpecSize规格大小
@@ -73,14 +73,14 @@ int measureSpec=MeasureSpec.makeMeasureSpec(size, mode);
 自定义View的流程 measure->layout->draw
 **measure:** 测量view的宽和高；
 **layout:** 确定View在父容器中的位置；
-**draw:** 将View绘制在屏幕上； 
+**draw:** 将View绘制在屏幕上；
 performTraversals会依次调用performMeasure、performLayout和performDraw三个方法；
 具体的：
 performMeasure->measure->onMeasure
 
 
 ## 2016/8/19 11:19:10 事件分发机制
-#### android事件分发（一） 
+#### android事件分发（一）
 http://blog.csdn.net/guolin_blog/article/details/9097463
 
 ##### 1.onTouch和onTouchEvent有什么区别，又该如何使用？
@@ -96,65 +96,11 @@ http://blog.csdn.net/guolin_blog/article/details/9097463
 
 提这个问题的朋友是看过了Android实现图片滚动控件，含页签功能，让你的应用像淘宝一样炫起来 这篇文章。当时我在图片轮播器里使用Button，主要就是因为Button是可点击的，而ImageView是不可点击的。如果想要使用ImageView，可以有两种改法。第一，在ImageView的onTouch方法里返回true，这样可以保证ACTION_DOWN之后的其它action都能得到执行，才能实现图片滚动的效果。第二，在布局文件里面给ImageView增加一个android:clickable="true"的属性，这样ImageView变成可点击的之后，即使在onTouch里返回了false，ACTION_DOWN之后的其它action也是可以得到执行的。
 
-#### android事件分发（二） 
-http://blog.csdn.net/guolin_blog/article/details/9153747 
+#### android事件分发（二）
+http://blog.csdn.net/guolin_blog/article/details/9153747
 
 1.Android事件分发是先传递到ViewGroup，再由ViewGroup传递到View的。
 
 2.在ViewGroup中可以通过onInterceptTouchEvent方法对事件传递进行拦截，onInterceptTouchEvent方法返回true代表不允许事件继续向子View传递，返回false代表不对事件进行拦截，默认返回false。
 
 3.子View中如果将传递的事件消费掉，ViewGroup中将无法接收到任何事件。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
